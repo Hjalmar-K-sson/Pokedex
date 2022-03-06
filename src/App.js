@@ -8,6 +8,17 @@ class App extends Component {
       search: "",
     };
   }
+  componentDidMount() {
+    fetch("https://pokeapi.co/api/v2/pokemon?limit=153")
+      .then((response) => response.json())
+      .then((pokemon) => {
+        console.log(pokemon);
+        this.setState(() => {
+          return { pokemon: pokemon };
+        });
+      });
+    console.log(this.state);
+  }
   render() {
     return <div>TEST DIV</div>;
   }
