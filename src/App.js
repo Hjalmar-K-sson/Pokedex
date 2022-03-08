@@ -11,16 +11,11 @@ class App extends Component {
   componentDidMount() {
     fetch("https://pokeapi.co/api/v2/pokemon?limit=153")
       .then((response) => response.json())
-      .then((pokemon) => {
-        console.log(pokemon);
-        this.setState(() => {
-          return { pokemon: pokemon };
-        });
-      });
-    console.log(this.state);
+      .then((name) => this.setState({ pokemon: name.results }));
   }
   render() {
-    return <div>TEST DIV</div>;
+    console.log(this.state);
+    return <div>SOME DIV</div>;
   }
 }
 
