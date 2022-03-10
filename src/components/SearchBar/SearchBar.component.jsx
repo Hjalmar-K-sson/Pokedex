@@ -4,11 +4,12 @@ import "./SearchBar.style.sass";
 class SearchBar extends Component {
   render() {
     return (
-      <input
-        className={this.props.className}
-        placeholder={this.props.placeholder}
-        onChange={this.props.onChange}
-      />
+      <div className={this.props.className}>
+        <input
+          placeholder={this.props.placeholder}
+          onChange={this.props.onChange}
+        />
+      </div>
     );
   }
 }
