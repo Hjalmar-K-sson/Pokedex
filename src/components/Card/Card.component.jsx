@@ -1,4 +1,5 @@
 import { Component } from "react";
+import "./Card.style.sass";
 
 class Card extends Component {
   render() {
