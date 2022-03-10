@@ -6,7 +6,7 @@ class CardGrid extends Component {
   render() {
     const { pokemon } = this.props;
     return (
-      <div>
+      <div className="CardGrid">
         {pokemon.map((poke, i) => (
           <Card key={i} pokemon={poke} />
         ))}
