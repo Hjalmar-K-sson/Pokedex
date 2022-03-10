@@ -8,29 +8,39 @@ class App extends Component {
     super();
     this.state = {
       pokemon: [],
-      search: "",
+      searchField: "",
     };
   }
   componentDidMount() {
     fetch("https://pokeapi.co/api/v2/pokemon?limit=153")
       .then((response) => response.json())
-      .then((pokemon) => this.setState({ pokemon: pokemon.results }));
+      .then((pokemon) =>
+        this.setState(() => {
+          return { pokemon: pokemon.results };
+        })
+      );
   }
   onSearchChange = (event) => {
-    const search = event.target.value.toLowerCase();
+    const searchField = event.target.value.toLocaleLowerCase();
     this.setState(() => {
-      return { search };
+      return { searchField };
     });
   };
   render() {
-    const { pokemon, search } = this.state;
+    const { pokemon, searchField } = this.state;
     const { onSearchChange } = this;
-    console.log(this.state.pokemon[0]);
+    const filteredPokemon = pokemon.filter((poke) => {
+      return poke.name.toLocaleLowerCase().includes(searchField);
+    });
     return (
       <div className="App">
         <h1>POKEDEX</h1>
-        <SearchBar onSearchChange={onSearchChange} />
-        <CardGrid pokemon={pokemon} />
+        <SearchBar
+          onChange={onSearchChange}
+          placeholder="Search Pokemon"
+          className="pokemon__search-box"
+        />
+        <CardGrid pokemon={filteredPokemon} />
       </div>
     );
   }
