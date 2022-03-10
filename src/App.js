@@ -38,7 +38,7 @@ class App extends Component {
         <SearchBar
           onChange={onSearchChange}
           placeholder="Search Pokemon"
-          className="pokemon__search-box"
+          className="SearchBar"
         />
         <CardGrid pokemon={filteredPokemon} />
       </div>
