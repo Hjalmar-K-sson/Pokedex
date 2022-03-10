@@ -4,7 +4,14 @@ import Card from "../Card/Card.component";
 
 class CardGrid extends Component {
   render() {
-    return <Card />;
+    const { pokemon } = this.props;
+    return (
+      <div>
+        {pokemon.map((poke, i) => (
+          <Card key={i} pokemon={poke} />
+        ))}
+      </div>
+    );
   }
 }
 
